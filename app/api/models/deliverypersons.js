@@ -1,0 +1,11 @@
+ var mongoose     = require('mongoose');
+ var Schema = mongoose.Schema;
+
+ var deliveryPerson   = new Schema({
+   userFullName : { type: String, required: true },
+   userEmail : { type: String, required: true },
+   userPhone  : {type: Number, required: true },
+   userDOB : {type: Date, requiredL true },
+ });
+ 
+ module.exports = mongoose.model('DeliveryPerson', deliveryPerson);
