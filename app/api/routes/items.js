@@ -29,12 +29,12 @@ router.route('/add')
 				var response = {};
 				if (!err) {
 					response.data = doc;
-					logger.info('response: ', response);
+					logger.info('response: ', response.status);
 					response.dataCount = response.data.length;
 					res.json(response);
 				} else {
 					response = { error_code: 400, message: 'Error reading data', error: err };
-					logger.error('response: ', response);
+					logger.error('response: ', response.status);
 					res.status(response.error_code);
 					res.json(response);
 				}
@@ -43,28 +43,55 @@ router.route('/add')
 	});
 
 router.route('/read')
-.post((req, res) => {
-	var response = {};
-	if (req.body) {
-		item.find(req.body, (err, docs) => {
-			if (!err) {
-				response.data = docs;
-				logger.info('response: ', response);
-				response.dataCount = response.data.length;
-				res.json(response);
-			} else {
-				response = { error_code: 400, message: 'Error reading data', error: err };
-				logger.error('response: ', response);
-				res.status(response.error_code);
-				res.json(response);
-			}
-		});
-	} else {
-		response = { error_code: 400, message: 'Request Body is empty', error: err };
-		logger.error('response: ', response);
-		res.status(response.error_code);
-		res.json(response);
-	}
-});
+	.post((req, res) => {
+		var response = {};
+		if (req.body) {
+			item.find(req.body, (err, docs) => {
+				if (!err) {
+					response.data = docs;
+					logger.info('response: ', response.status);
+					response.dataCount = response.data.length;
+					res.json(response);
+				} else {
+					response = { error_code: 400, message: 'Error reading data', error: err };
+					logger.error('response: ', response.status);
+					res.status(response.error_code);
+					res.json(response);
+				}
+			});
+		} else {
+			response = { error_code: 400, message: 'Request Body is empty', error: err };
+			logger.error('response: ', response.status);
+			res.status(response.error_code);
+			res.json(response);
+		}
+	});
 
+router.route('/delete')
+	.post((req, res) => {
+		var response = {};
+		if (req.body) {
+			var query = {
+				'_id': req.body['_id']
+			};
+			item.deleteOne(query, (err) => {
+				if (!err) {
+					logger.info('response: ', response.status);
+					response.status = 200;
+					response.message = "Deleted Successfully: ID :" + query['_id'];
+					res.json(response);
+				} else {
+					response = { error_code: 400, message: 'Error reading data', error: err };
+					logger.error('response: ', response.status);
+					res.status(response.error_code);
+					res.json(response);
+				}
+			})
+		} else {
+			response = { error_code: 400, message: 'Request Body is empty', error: err };
+			logger.error('response: ', response.status);
+			res.status(response.error_code);
+			res.json(response);
+		}
+	});
 module.exports = router;
