@@ -6,7 +6,7 @@
    itemId: { type: String, required: true },
    productId : { type: String, required: true, ref: 'Products'},
    brandId : { type: String, required: true, ref: 'Brands'},
-   itemModel : { type: String, required: true },
+   itemSerialId : { type: String, required: true },
    itemRetailCost: { type: Number, required: true },
  });
  
