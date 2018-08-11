@@ -8,7 +8,8 @@
    amountPaid : { type: Number, required: true },
    deliveryAddress : { type: String, required: true },
    deliveryPersonId : { type: String, required: true, ref: "DeliveryPerson" },
-   returnDate : { tyep: Date, required: true },
+   DeliveryDate: { type: Date, required: true },
+   returnDate : { type: Date, required: true }
  });
  
  module.exports = mongoose.model('Transactions', transactions);
