@@ -8,6 +8,7 @@
    brandId : { type: String, required: true, ref: 'Brands'},
    itemSerialId : { type: String, required: true },
    itemRetailCost: { type: Number, required: true },
+   itemStatus: { type: String, required: true }
  });
  
  module.exports = mongoose.model('Items', items);
