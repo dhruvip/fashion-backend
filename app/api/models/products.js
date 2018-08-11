@@ -3,6 +3,7 @@
 
  var products   = new Schema({
    productName : { type: String, required: true },
+   modelNumber : { type: String, required: true },
    productId : { type: String, required: true },
    gender: { type: String, required: true },
    brandId: { type: string, required: true }
