@@ -1,5 +1,5 @@
 {
-  "name": "appName",
+  "name": "trendTierServer",
   "version": "1.0.0",
   "description": "Comments for everyone.",
   "main": "server.js",
@@ -23,6 +23,7 @@
     "multer": "~0.1.6",
     "node-cache": "~3.0.0",
     "request": "^2.65.0",
+    "shortid": "^2.2.13",
     "winston": "~1.0.0"
   }
 }

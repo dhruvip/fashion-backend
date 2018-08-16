@@ -7,6 +7,7 @@ var logger = require("./utils/logger");
 var authenticate = require("./authenticate/authenticate.js");
 var apiRoute     = require("./app/api/routes/routes");
 var items = require("./app/api/routes/items");
+var brands = require("./app/api/routes/brands");
 var app = express();
 app.use(bodyParser.urlencoded({
   extended: false
@@ -54,6 +55,7 @@ app.get('/', function(req, res) {
 
 app.use('/test', apiRoute);
 app.use('/items', items);
+app.use('/brands', brands);
 
 var server = app.listen(config.listenPort, function() {
   var host = server.address().address;

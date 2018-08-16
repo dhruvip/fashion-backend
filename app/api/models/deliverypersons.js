@@ -1,6 +1,6 @@
  var mongoose     = require('mongoose');
  var Schema = mongoose.Schema;
-
+// replicate as user
  var deliveryPerson   = new Schema({
    userFullName : { type: String, required: true },
    userEmail : { type: String, required: true },
