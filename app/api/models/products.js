@@ -6,7 +6,8 @@
    modelNumber : { type: String, required: true },
    productId : { type: String, required: true },
    gender: { type: String, required: true },
-   brandId: { type: string, required: true }
+   brandId: { type: String, required: true },
+   pageLink: {type: String}
  });
  
  module.exports = mongoose.model('Products', products);

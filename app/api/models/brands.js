@@ -6,7 +6,7 @@
    brandCategory: { type: String, required: true, enum: config.categories , default: config.categories[0]}, //enum from ['Watches']
    brandName : { type: String, required: true },
    brandId : { type: String, required: true },
-   gender: { type: String, required: true, enum: ['MALE','FEMALE','UNISEX'], default: 'UNISEX'} // M: male; F: female; U: unisex
+   gender: { type: String, required: true, enum: ['MALE','FEMALE','UNISEX','BOTH'], default: 'UNISEX'} // M: male; F: female; U: unisex
  });
  
  module.exports = mongoose.model('Brands', brands);
