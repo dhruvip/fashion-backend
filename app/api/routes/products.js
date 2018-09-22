@@ -3,6 +3,7 @@ var router = express.Router();
 var product = require('../models/products');
 var logger     = require("../../../utils/logger");
 var config		 = require('../../../config.js');
+var _ = require('lodash');
 /**  STANDARD RESPONSE TEMPLATE
  var response = {};
 	if (!err) {
@@ -95,4 +96,42 @@ router.route('/delete')
 			res.json(response);
 		}
 	});
+router.route('/edit')
+.post((req, res) => {
+	var response = {};
+	if (req.body) {
+		var query = {
+			'_id': req.body['_id']
+		};
+		product.find(query, (err, updateDoc) => {
+			if (!err) {
+				_.assign(updateDoc[0],req.body);
+				product(updateDoc[0]).save((err, doc) => {
+					var response = {};
+					if (!err) {
+						response.data = doc;
+						logger.info('response: ', response.status);
+						response.dataCount = response.data.length;
+						res.json(response);
+					} else {
+						response = { error_code: 400, message: 'Error reading data', error: err };
+						logger.error('response: ', response.status);
+						res.status(response.error_code);
+						res.json(response);
+					}
+				});
+			} else {
+				response = { error_code: 400, message: 'Error reading data', error: err };
+				logger.error('response: ', response.status);
+				res.status(response.error_code);
+				res.json(response);
+			}
+		})
+	} else {
+		response = { error_code: 400, message: 'Request Body is empty', error: err };
+		logger.error('response: ', response.status);
+		res.status(response.error_code);
+		res.json(response);
+	}
+});
 module.exports = router;

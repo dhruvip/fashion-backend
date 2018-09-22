@@ -5,7 +5,7 @@
    userFullName : { type: String, required: true },
    userEmail : { type: String, required: true },
    userPhone  : {type: Number, required: true },
-   userDOB : {type: Date, requiredL true },
+   userDOB : {type: Date, required: true },
  });
  
  module.exports = mongoose.model('Users', users);
