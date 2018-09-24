@@ -5,7 +5,7 @@
    productName : { type: String, required: true },
    modelNumber : { type: String, required: true },
    productId : { type: String, required: true },
-   gender: { type: String, required: true },
+   gender: { type: String, required: true, enum: ['MALE','FEMALE','UNISEX'], default: 'UNISEX'},
    brandId: { type: String, required: true },
    pageLink: {type: String}
  });

@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-mongoose.connect(config.db, { useNewUrlParser: true });
+mongoose.connect(config.mlabdb, { useNewUrlParser: true });
 mongoose.connection.on('error', () => {
   console.log('error connecting to database!!');
 });

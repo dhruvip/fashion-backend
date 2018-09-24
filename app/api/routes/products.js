@@ -4,6 +4,7 @@ var product = require('../models/products');
 var logger     = require("../../../utils/logger");
 var config		 = require('../../../config.js');
 var _ = require('lodash');
+var common = require('commonFunctions')
 /**  STANDARD RESPONSE TEMPLATE
  var response = {};
 	if (!err) {
